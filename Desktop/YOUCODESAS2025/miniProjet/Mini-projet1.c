@@ -1,42 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void Ajouter(){
+typedef struct Contact{
 
-    char nom[50], telephone[50];
-    int i, j, n;
+    char nom[50];
+    int tele;
 
-    printf("Entrer le nombre de contact a ajouter: ");
-    scanf("%d", &n);
-    printf("Entrer votre nom: ");
-    scanf("%s",nom);
-    printf("Entrer votre numero de telephone: ");
-    scanf("%s",telephone);
-
-    return 'nom'+'telephone';
-}
-
-void Afficher(){
-    char nom[50], telephone[50];
-    printf("%s: %s", nom, telephone);
-
-}
-
-
-
-
-
-
-
+}contact;
 
 
 int main(){
+int i, nombre, choix, trouve;
+char rechercher[50];
 
-char T[50][50];
-int i, j, choix;
+contact c1[50];
 
 do{
-    printf("----- Menu -----\n");
+    printf("\n\n----- Menu -----\n");
     printf("1.Ajouter un contact.\n");
     printf("2.Afficher tous les contacts.\n");
     printf("3.Rechercher un contact par son nom.\n");
@@ -45,21 +26,44 @@ do{
     printf("Choix:");
     scanf("%d", &choix);
 
+
     switch(choix){
 case 1:
-    Ajouter();
+    printf("Entrer combien de contact vous voulez ajouter: ");
+    scanf("%d", &nombre);
+    for(i=0; i<nombre; i++){
+        printf("Entrer le nom: ");
+        scanf("%s",&c1[i].nom);
+        printf("Entrer le numero de telephone: 0");
+        scanf("%d",&c1[i].tele);
+    }
     break;
 case 2:
-    Afficher();
+    printf("Vous avez %d contacts, sont comme suit:\n", nombre);
+    for(i=0; i<nombre; i++){
+        printf("\nContact %d:\n", i+1);
+        printf("%s:  %d ", c1[i].nom, c1[i].tele);
+    }
     break;
 case 3:
+    printf("Entrer le nom du contact pour rechercher: ");
+    scanf("%s",rechercher);
 
+    for(i=0; i<nombre; i++){
+        if(strcmp(rechercher, c1[i].nom) == 0){
+            printf("Voici le contact rechercher: %s: %d", c1[i].nom, c1[i].tele);
+            break;
+        }
+    }
     break;
 case 4:
 
     break;
 case 5:
-
+    printf("Au revoir!");
+    break;
+default:
+    printf("Erreur");
     break;
     }
 }while(choix<5 && choix>0);
