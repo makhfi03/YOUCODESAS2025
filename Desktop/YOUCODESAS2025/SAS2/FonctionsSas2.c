@@ -1,4 +1,4 @@
-#include <stdio.h>
+g#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "Sas2.h"
@@ -275,7 +275,7 @@ void effectuerAchat(int quantite){
 
     ajouterAchatHistorique(p[choix-1].idProduit, quantite);
 
-    printf("Achat ajouté à l'historique!\n");
+    printf("Achat ajoutï¿½ ï¿½ l'historique!\n");
 }
 
 void verifierStock(int choix, int quantite){
